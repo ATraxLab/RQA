@@ -5,9 +5,9 @@
 # Input: Posts is character vector, one post per entry
 # Output: Character vector, one sentence per entry
 makeSentences <- function(posts) {
-  sentences <- unlist(strsplit(posts,"!",fixed=TRUE))
-  sentences <- unlist(strsplit(sentences,"?",fixed=TRUE))
-  sentences <- unlist(strsplit(sentences,". ",fixed=TRUE))
+  sentences <- unlist(strsplit(posts, "!", fixed = TRUE))
+  sentences <- unlist(strsplit(sentences, "?", fixed = TRUE))
+  sentences <- unlist(strsplit(sentences, ". ", fixed = TRUE))
   return(sentences)
 }
 
@@ -18,11 +18,11 @@ makeSentences <- function(posts) {
 #  entry is a sentence
 makeWindows <- function(sentences, wsize = 3) {
   wcount <- ceiling(length(sentences)/wsize)  # number of windows this will make
-  windows <- vector("list",wcount)   # initialize empty list 
+  windows <- vector("list", wcount)   # initialize empty list 
   for (i in 1:wcount) {
     # figure out where this window begins and ends in the sentences vector
-    first <- wsize*(i-1)+1
-    last <- min(i*wsize,length(sentences))
+    first <- wsize*(i - 1) + 1
+    last <- min(i*wsize, length(sentences))
     # make a list using those entries from the sentences vector
     windows[i] <- list(sentences[first:last])
   }
